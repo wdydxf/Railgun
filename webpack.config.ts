@@ -47,5 +47,33 @@ module.exports = (options: Configuration) => {
     ...options.module.rules
   ];
 
+  // 获取所有与样式相关的规则
+  const styleRules = options.module.rules.filter(v => {
+    const testMatch = ['/\\.css$/', '/\\.scss$|\\.sass$/', '/\\.less$/', '/\\.styl$/'];
+    return testMatch.includes(v.test.toString());
+  });
+
+  // 删除 postcss-cli-resources 并追加其他规则
+  styleRules.forEach((rule: any) => {
+    const postcssLoaderIndex = rule.use.findIndex(loader => (
+      loader.loader && loader.loader.indexOf('postcss-loader') !== -1
+    ));
+    const oldPlugins = rule.use[postcssLoaderIndex].options.plugins.call().filter(p => p.postcssPlugin !== 'postcss-cli-resources');
+    rule.use[postcssLoaderIndex].options.plugins = (loader) => [...oldPlugins];
+
+    // 插入其他规则
+    const loaderCount = rule.use.length - postcssLoaderIndex;
+    rule.use.splice(postcssLoaderIndex, 0, {
+        loader: 'extract-loader'
+      }, {
+        loader: 'css-loader',
+        options: {
+          importLoaders: loaderCount,
+          esModule: false
+        }
+      }
+    );
+  });
+
   return options;
 };
