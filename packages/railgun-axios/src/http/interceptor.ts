@@ -42,3 +42,8 @@ export class NoopInterceptor implements AxiosInterceptor {
   }
 
 }
+
+/**
+ * 导出拦截器所需的Axios类型声明
+ * */
+export { AxiosError, AxiosRequestConfig, AxiosResponse } from 'axios';
