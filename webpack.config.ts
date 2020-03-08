@@ -2,6 +2,9 @@
  * 这里自定义构建流程是为了能够处理模板中对任意位置静态资源的引用, 并对静态资源进行分类存储
  * 同时也修复了默认配置下, 样式文件引用的静态资源会被放置到根目录的问题.
  * */
+
+// @ts-nocheck
+
 import { Configuration } from 'webpack';
 import { AngularCompilerPlugin } from '@ngtools/webpack';
 
