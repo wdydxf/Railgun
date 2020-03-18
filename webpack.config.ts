@@ -6,13 +6,12 @@
 // @ts-nocheck
 
 import { Configuration } from 'webpack';
-import { AngularCompilerPlugin } from '@ngtools/webpack';
 
 module.exports = (options: Configuration) => {
   const prod = options.mode === 'production';
 
   // 禁止 AngularCompilerPlugin 直接读取模板文件, 这样才能在编译前使用 html-loader 对模板进行预处理
-  const target = options.plugins.find(v => v.constructor === AngularCompilerPlugin);
+  const target = options.plugins.find(v => v.constructor.name === 'AngularCompilerPlugin');
   (target as AngularCompilerPlugin).options.directTemplateLoading = false;
 
   // 修改 file-loader 配置并添加 html-loader
