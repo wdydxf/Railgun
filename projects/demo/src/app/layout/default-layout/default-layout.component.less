@@ -1,0 +1,55 @@
+nz-layout.layout-wrapper {
+  height: 100%;
+  overflow: hidden;
+}
+
+nz-sider {
+  /deep/ .ant-layout-sider-children {
+    display: flex;
+    flex-flow: column;
+    overflow: hidden;
+  }
+
+  .layout-title {
+    height: 64px;
+    overflow: hidden;
+
+    h1 {
+      color: #FFFFFF;
+      font-size: 30px;
+      font-weight: bolder;
+      line-height: 64px;
+      margin: 0;
+      text-align: center;
+    }
+  }
+
+  .layout-menu {
+    flex: 1;
+    overflow-x: hidden;
+    overflow-y: auto;
+  }
+}
+
+nz-layout.layout-main {
+  nz-header {
+    background-color: #FFFFFF;
+    padding: 0;
+
+    .layout-collapsed-btn {
+      font-size: 18px;
+      padding: 0 24px;
+      cursor: pointer;
+      transition: color .3s;
+
+      &:hover {
+        color: #1890ff;
+      }
+    }
+  }
+
+  nz-footer {
+    text-align: center;
+    padding: 16px 0;
+  }
+}

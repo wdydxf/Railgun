@@ -1,0 +1,25 @@
+<nz-layout class="layout-wrapper">
+  <nz-sider nzWidth="240px" [nzCollapsed]="collapsed">
+    <div class="layout-title">
+      <h1>{{!collapsed ? title : title[0]}}</h1>
+    </div>
+    <div class="layout-menu">
+      <!-- todo: 此处需要菜单组件 -->
+    </div>
+  </nz-sider>
+  <nz-layout class="layout-main">
+    <nz-header>
+      <!-- 侧边栏折叠按钮 -->
+      <i class="layout-collapsed-btn" nz-icon [nzType]="!collapsed ? 'menu-fold' : 'menu-unfold'"
+         (click)="handleSiderCollapsed()"
+      ></i>
+      <!-- todo: 此处需要面包屑组件 -->
+    </nz-header>
+    <nz-content>
+      <router-outlet></router-outlet>
+    </nz-content>
+    <nz-footer>
+      <span>本项目由 Misaka Mikoto 提供电力支持</span>
+    </nz-footer>
+  </nz-layout>
+</nz-layout>

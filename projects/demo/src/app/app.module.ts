@@ -13,10 +13,12 @@ registerLocaleData(zh);
 import { SharedModule } from '../shared/shared.module';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { DefaultLayoutComponent } from './layout/default-layout/default-layout.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    DefaultLayoutComponent
   ],
   imports: [
     BrowserModule,
