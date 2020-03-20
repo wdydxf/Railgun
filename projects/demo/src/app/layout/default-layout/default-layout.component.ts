@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { menus } from '../../config/menus';
 
 @Component({
   selector: 'app-default-layout',
@@ -8,6 +9,7 @@ import { Component, OnInit } from '@angular/core';
 export class DefaultLayoutComponent implements OnInit {
   title = 'Railgun';
   collapsed = false;
+  menus = menus;
 
   constructor() {
   }

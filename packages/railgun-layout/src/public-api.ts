@@ -3,3 +3,4 @@
  */
 
 export * from './railgun-layout.module';
+export * from './interface';

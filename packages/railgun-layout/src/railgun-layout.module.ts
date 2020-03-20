@@ -1,10 +1,15 @@
 import { NgModule } from '@angular/core';
+import { SiderNavComponent } from './components/sider-nav/sider-nav.component';
 
 
 @NgModule({
-  declarations: [],
+  declarations: [
+    SiderNavComponent
+  ],
   imports: [],
-  exports: []
+  exports: [
+    SiderNavComponent
+  ]
 })
 export class RailgunLayoutModule {
 }

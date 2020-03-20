@@ -14,6 +14,7 @@ import { SharedModule } from '../shared/shared.module';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { DefaultLayoutComponent } from './layout/default-layout/default-layout.component';
+import { RailgunLayoutModule } from '@ndct/railgun-layout';
 
 @NgModule({
   declarations: [
@@ -25,6 +26,7 @@ import { DefaultLayoutComponent } from './layout/default-layout/default-layout.c
     BrowserAnimationsModule,
     HttpClientModule,
     SharedModule,
+    RailgunLayoutModule,
     AppRoutingModule
   ],
   providers: [
