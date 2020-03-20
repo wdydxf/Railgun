@@ -1,1 +1,38 @@
-<p>sider-nav works!</p>
+<!--
+  直接使用递归组件的写法在折叠菜单时会造成样式错误, 所以第一层菜单直接在组件本身渲染
+  当修改菜单项时必须同步修改sider-nav-item组件以保持行为一致
+  注意: title属性只应添加在第一层菜单中的菜单项或二级菜单上, 以保证折叠时有良好的提示. 忽略第一层菜单上的菜单组
+-->
+<ul nz-menu nzMode="inline" nzTheme="dark" [nzInlineCollapsed]="collapsed">
+  <ng-container *ngFor="let menu of menus">
+    <!-- 单项菜单 -->
+    <li nz-menu-item *ngIf="!menu.children && !menu.isGroup" [nzDisabled]="menu.disabled"
+        [title]="menu.title" nzMatchRouter [nzMatchRouterExact]="menu.link === '/'"
+    >
+      <!-- 内部链接 -->
+      <a *ngIf="menu.link && !isExternalLink(menu.link)" [routerLink]="menu.link">
+        <i nz-icon [nzType]="menu.icon"></i>
+        <span>{{menu.title}}</span>
+      </a>
+      <!-- 外部链接 -->
+      <a *ngIf="menu.link && isExternalLink(menu.link)" [href]="menu.link" [target]="menu.target">
+        <i nz-icon [nzType]="menu.icon"></i>
+        <span>{{menu.title}}</span>
+      </a>
+    </li>
+
+    <!-- 二级菜单 -->
+    <li nz-submenu *ngIf="menu.children && !menu.isGroup" [(nzOpen)]="menu.open">
+      <span [title]="menu.title">
+        <i nz-icon [nzType]="menu.icon"></i>
+        <span>{{menu.title}}</span>
+      </span>
+
+      <ul>
+        <ng-container *ngFor="let child of menu.children">
+          <!-- todo: 子菜单组件 -->
+        </ng-container>
+      </ul>
+    </li>
+  </ng-container>
+</ul>
