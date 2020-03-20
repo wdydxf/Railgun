@@ -29,9 +29,7 @@
       </span>
 
       <ul>
-        <ng-container *ngFor="let child of menu.children">
-          <!-- todo: 子菜单组件 -->
-        </ng-container>
+        <rg-sider-nav-item *ngFor="let child of menu.children" [menu]="child"></rg-sider-nav-item>
       </ul>
     </li>
   </ng-container>

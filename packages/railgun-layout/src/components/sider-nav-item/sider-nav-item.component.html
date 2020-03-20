@@ -1,0 +1,31 @@
+<!-- 单项菜单 -->
+<li nz-menu-item *ngIf="menu && !menu.children && !menu.isGroup" [nzDisabled]="menu.disabled"
+    nzMatchRouter [nzMatchRouterExact]="menu.link === '/'"
+>
+  <!-- 内部链接 -->
+  <a *ngIf="menu.link && !isExternalLink(menu.link)" [routerLink]="menu.link">
+    <i nz-icon [nzType]="menu.icon"></i>
+    <span>{{menu.title}}</span>
+  </a>
+  <!-- 外部链接 -->
+  <a *ngIf="menu.link && isExternalLink(menu.link)" [href]="menu.link" [target]="menu.target">
+    <i nz-icon [nzType]="menu.icon"></i>
+    <span>{{menu.title}}</span>
+  </a>
+</li>
+
+<!-- 二级菜单 -->
+<li nz-submenu *ngIf="menu && menu.children && !menu.isGroup" [nzTitle]="menu.title" [nzIcon]="menu.icon"
+    [(nzOpen)]="menu.open"
+>
+  <ul>
+    <rg-sider-nav-item *ngFor="let child of menu.children" [menu]="child"></rg-sider-nav-item>
+  </ul>
+</li>
+
+<!-- 菜单分组 -->
+<li nz-menu-group *ngIf="menu && menu.children && menu.isGroup" [nzTitle]="menu.title">
+  <ul>
+    <rg-sider-nav-item *ngFor="let child of menu.children" [menu]="child"></rg-sider-nav-item>
+  </ul>
+</li>
