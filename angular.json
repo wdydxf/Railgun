@@ -103,78 +103,38 @@
         }
       }
     },
-    "railgun-axios": {
+    "railgun": {
       "projectType": "library",
-      "root": "packages/railgun-axios",
-      "sourceRoot": "packages/railgun-axios/src",
+      "root": "packages/railgun",
+      "sourceRoot": "packages/railgun/src",
       "prefix": "rg",
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-ng-packagr:build",
           "options": {
-            "tsConfig": "packages/railgun-axios/tsconfig.lib.json",
-            "project": "packages/railgun-axios/ng-package.json"
+            "tsConfig": "packages/railgun/tsconfig.lib.json",
+            "project": "packages/railgun/ng-package.json"
           },
           "configurations": {
             "production": {
-              "tsConfig": "packages/railgun-axios/tsconfig.lib.prod.json"
+              "tsConfig": "packages/railgun/tsconfig.lib.prod.json"
             }
           }
         },
         "test": {
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
-            "main": "packages/railgun-axios/src/test.ts",
-            "tsConfig": "packages/railgun-axios/tsconfig.spec.json",
-            "karmaConfig": "packages/railgun-axios/karma.conf.js"
+            "main": "packages/railgun/src/test.ts",
+            "tsConfig": "packages/railgun/tsconfig.spec.json",
+            "karmaConfig": "packages/railgun/karma.conf.js"
           }
         },
         "lint": {
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
             "tsConfig": [
-              "packages/railgun-axios/tsconfig.lib.json",
-              "packages/railgun-axios/tsconfig.spec.json"
-            ],
-            "exclude": [
-              "**/node_modules/**"
-            ]
-          }
-        }
-      }
-    },
-    "railgun-layout": {
-      "projectType": "library",
-      "root": "packages/railgun-layout",
-      "sourceRoot": "packages/railgun-layout/src",
-      "prefix": "rg",
-      "architect": {
-        "build": {
-          "builder": "@angular-devkit/build-ng-packagr:build",
-          "options": {
-            "tsConfig": "packages/railgun-layout/tsconfig.lib.json",
-            "project": "packages/railgun-layout/ng-package.json"
-          },
-          "configurations": {
-            "production": {
-              "tsConfig": "packages/railgun-layout/tsconfig.lib.prod.json"
-            }
-          }
-        },
-        "test": {
-          "builder": "@angular-devkit/build-angular:karma",
-          "options": {
-            "main": "packages/railgun-layout/src/test.ts",
-            "tsConfig": "packages/railgun-layout/tsconfig.spec.json",
-            "karmaConfig": "packages/railgun-layout/karma.conf.js"
-          }
-        },
-        "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
-          "options": {
-            "tsConfig": [
-              "packages/railgun-layout/tsconfig.lib.json",
-              "packages/railgun-layout/tsconfig.spec.json"
+              "packages/railgun/tsconfig.lib.json",
+              "packages/railgun/tsconfig.spec.json"
             ],
             "exclude": [
               "**/node_modules/**"
