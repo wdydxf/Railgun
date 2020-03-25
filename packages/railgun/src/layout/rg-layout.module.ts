@@ -1,8 +1,8 @@
 import { NgModule } from '@angular/core';
-import { SiderNavComponent } from './components/sider-nav/sider-nav.component';
-import { NzIconModule, NzMenuModule } from 'ng-zorro-antd';
 import { CommonModule } from '@angular/common';
+import { NzIconModule, NzMenuModule } from 'ng-zorro-antd';
 import { RouterModule } from '@angular/router';
+import { SiderNavComponent } from './components/sider-nav/sider-nav.component';
 import { SiderNavItemComponent } from './components/sider-nav-item/sider-nav-item.component';
 
 
@@ -12,8 +12,8 @@ import { SiderNavItemComponent } from './components/sider-nav-item/sider-nav-ite
     SiderNavItemComponent
   ],
   imports: [
-    NzMenuModule,
     CommonModule,
+    NzMenuModule,
     RouterModule,
     NzIconModule
   ],
@@ -21,5 +21,5 @@ import { SiderNavItemComponent } from './components/sider-nav-item/sider-nav-ite
     SiderNavComponent
   ]
 })
-export class RailgunLayoutModule {
+export class RgLayoutModule {
 }

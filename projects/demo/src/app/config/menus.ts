@@ -1,4 +1,4 @@
-import { Menu } from '@ndct/railgun-layout';
+import { Menu } from '@ndct/railgun';
 
 export const menus: Menu[] = [
   { title: '首页', link: '/', icon: 'home' },
