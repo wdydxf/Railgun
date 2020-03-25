@@ -2,10 +2,11 @@
   "name": "@ndct/railgun",
   "version": "0.0.1",
   "peerDependencies": {
-    "@angular/common": "^9.0.6",
-    "@angular/core": "^9.0.6",
+    "@angular/common": "~9.0.7",
+    "@angular/core": "~9.0.7",
     "tslib": "^1.10.0",
     "axios": "^0.19.2",
-    "rxjs": "^6.5.4"
+    "rxjs": "^6.5.4",
+    "ng-zorro-antd": "^8.5.2"
   }
 }
