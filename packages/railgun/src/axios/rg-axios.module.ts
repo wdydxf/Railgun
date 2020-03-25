@@ -9,5 +9,5 @@ import { AXIOS_INTERCEPTOR, NoopInterceptor } from './http/interceptor';
     { provide: AXIOS_INTERCEPTOR, useClass: NoopInterceptor }
   ]
 })
-export class RailgunAxiosModule {
+export class RgAxiosModule {
 }
