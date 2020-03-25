@@ -3,3 +3,4 @@
  */
 
 export * from './railgun.module';
+export * from './axios/index';
