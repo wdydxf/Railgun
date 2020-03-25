@@ -2,7 +2,7 @@
   "name": "railgun",
   "version": "0.0.0",
   "scripts": {
-    "ng": "ng",
+    "ng": "node --max-old-space-size=8192 ./node_modules/@angular/cli/bin/ng",
     "start": "ng serve",
     "build": "ng build --prod",
     "test": "ng test",
