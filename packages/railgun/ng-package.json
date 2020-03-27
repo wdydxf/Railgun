@@ -2,6 +2,10 @@
   "$schema": "../../node_modules/ng-packagr/ng-package.schema.json",
   "dest": "../../dist/railgun",
   "lib": {
-    "entryFile": "src/packages.ts"
+    "entryFile": "index.ts",
+    "umdModuleIds": {
+      "axios": "^0.19.2",
+      "ng-zorro-antd": "^8.5.2"
+    }
   }
 }
