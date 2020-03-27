@@ -10,8 +10,8 @@ import { NZ_I18N, zh_CN } from 'ng-zorro-antd';
 
 registerLocaleData(zh);
 
-import { SharedModule } from '../shared/shared.module';
-import { AppRoutingModule } from './app-routing.module';
+import { SharedModule } from './shared/shared.module';
+import { AppRoutingModule } from './modules/app-routing.module';
 import { AppComponent } from './app.component';
 import { DefaultLayoutComponent } from './layout/default-layout/default-layout.component';
 import { RgLayoutModule } from '@ndct/railgun';
