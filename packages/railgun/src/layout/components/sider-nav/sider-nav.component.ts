@@ -50,10 +50,26 @@ export class SiderNavComponent implements OnChanges {
     return !!menu.open;
   }
 
+  /**
+   * 关闭菜单项自身及其子项
+   * @param menu 要关闭的菜单项
+   */
+  closeMenuItem(menu: Menu) {
+    // 当菜单项为关闭状态时其子项必然是关闭的, 无需向下检查
+    if (!menu.children || !menu.open) { return; }
+    menu.open = false;
+    menu.children.forEach(v => this.closeMenuItem(v));
+  }
+
   ngOnChanges(changes: SimpleChanges): void {
     // 执行菜单项检查
     if (this.autoExpand && changes.menus) {
       this.menus.forEach(v => this.checkMenuItemExpand(v));
+    }
+
+    // 当菜单项展开层数过多时, 执行折叠会造成菜单错位的问题. 所以在执行折叠时, 关闭所有展开的菜单项
+    if (this.collapsed && changes.collapsed) {
+      this.menus.forEach(v => this.closeMenuItem(v));
     }
   }
 }
