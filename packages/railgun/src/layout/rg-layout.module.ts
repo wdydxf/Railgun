@@ -4,12 +4,14 @@ import { NzIconModule, NzMenuModule } from 'ng-zorro-antd';
 import { RouterModule } from '@angular/router';
 import { SiderNavComponent } from './components/sider-nav/sider-nav.component';
 import { SiderNavItemComponent } from './components/sider-nav-item/sider-nav-item.component';
+import { BreadcrumbComponent } from './components/breadcrumb/breadcrumb.component';
 
 
 @NgModule({
   declarations: [
     SiderNavComponent,
-    SiderNavItemComponent
+    SiderNavItemComponent,
+    BreadcrumbComponent
   ],
   imports: [
     CommonModule,
@@ -18,7 +20,8 @@ import { SiderNavItemComponent } from './components/sider-nav-item/sider-nav-ite
     NzIconModule
   ],
   exports: [
-    SiderNavComponent
+    SiderNavComponent,
+    BreadcrumbComponent
   ]
 })
 export class RgLayoutModule {

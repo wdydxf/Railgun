@@ -13,7 +13,7 @@
       <i class="layout-collapsed-btn" nz-icon [nzType]="!collapsed ? 'menu-fold' : 'menu-unfold'"
          (click)="handleSiderCollapsed()"
       ></i>
-      <!-- todo: 此处需要面包屑组件 -->
+      <rg-breadcrumb></rg-breadcrumb>
     </nz-header>
     <nz-content>
       <router-outlet></router-outlet>
