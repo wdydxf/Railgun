@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { Menu } from '../../interface';
+import { Menu } from '../sider-nav/sider-nav.component';
 
 @Component({
   selector: 'rg-sider-nav-item',
