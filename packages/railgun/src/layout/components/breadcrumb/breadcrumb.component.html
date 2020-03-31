@@ -1,1 +1,18 @@
-<p>breadcrumb works!</p>
+<nz-breadcrumb>
+  <!-- 首页链接 -->
+  <nz-breadcrumb-item *ngIf="showHome">
+    <a [routerLink]="homeLink">{{homeTitle}}</a>
+  </nz-breadcrumb-item>
+
+  <!-- 页面链接 -->
+  <nz-breadcrumb-item *ngFor="let item of data">
+    <!-- 如果没有link属性或者link属性为空字符串, 则不渲染为链接 -->
+    <ng-container *ngIf="!item.link || item.link.length === 0">
+      <span>{{item.title}}</span>
+    </ng-container>
+
+    <ng-container *ngIf="item.link && item.link.length > 0">
+      <a [routerLink]="item.link">{{item.title}}</a>
+    </ng-container>
+  </nz-breadcrumb-item>
+</nz-breadcrumb>
