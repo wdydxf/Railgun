@@ -4,28 +4,28 @@
   注意: title属性只应添加在第一层菜单中的菜单项或二级菜单上, 以保证折叠时有良好的提示. 忽略第一层菜单上的菜单组
 -->
 <ul nz-menu nzMode="inline" nzTheme="dark" [nzInlineCollapsed]="collapsed">
-  <ng-container *ngFor="let menu of menus">
+  <ng-container *ngFor="let menu of data">
     <!-- 单项菜单 -->
     <li nz-menu-item *ngIf="!menu.children && !menu.isGroup" [nzDisabled]="menu.disabled"
-        [title]="menu.title" nzMatchRouter [nzMatchRouterExact]="menu.link === '/'"
+        [title]="menu.label" nzMatchRouter [nzMatchRouterExact]="menu.link === '/'"
     >
       <!-- 内部链接 -->
       <a *ngIf="menu.link && !isExternalLink(menu.link)" [routerLink]="menu.link">
         <i nz-icon [nzType]="menu.icon"></i>
-        <span>{{menu.title}}</span>
+        <span>{{menu.label}}</span>
       </a>
       <!-- 外部链接 -->
       <a *ngIf="menu.link && isExternalLink(menu.link)" [href]="menu.link" [target]="menu.target">
         <i nz-icon [nzType]="menu.icon"></i>
-        <span>{{menu.title}}</span>
+        <span>{{menu.label}}</span>
       </a>
     </li>
 
     <!-- 二级菜单 -->
     <li nz-submenu *ngIf="menu.children && !menu.isGroup" [(nzOpen)]="menu.open">
-      <span [title]="menu.title">
+      <span [title]="menu.label">
         <i nz-icon [nzType]="menu.icon"></i>
-        <span>{{menu.title}}</span>
+        <span>{{menu.label}}</span>
       </span>
 
       <ul>

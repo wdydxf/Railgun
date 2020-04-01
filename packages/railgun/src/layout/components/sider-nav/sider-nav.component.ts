@@ -5,7 +5,7 @@ import { Location } from '@angular/common';
  * 菜单项类型声明
  * */
 export interface Menu {
-  title: string;                // 菜单显示文字
+  label: string;                // 菜单显示文字
   icon?: string;                // 图标
   link?: string;                // 链接地址, 以协议开头的地址会被视为外部链接
   children?: Menu[];            // 子菜单
@@ -21,7 +21,7 @@ export interface Menu {
   styleUrls: ['./sider-nav.component.less']
 })
 export class SiderNavComponent implements OnChanges {
-  @Input() menus: Menu[] = [];    // 菜单数据
+  @Input() data: Menu[] = [];    // 菜单数据
   @Input() collapsed = false;     // 是否折叠菜单
   @Input() autoExpand = true;     // 是否根据路由自动展开菜单
 
@@ -77,12 +77,12 @@ export class SiderNavComponent implements OnChanges {
   ngOnChanges(changes: SimpleChanges): void {
     // 执行菜单项检查
     if (this.autoExpand && changes.menus) {
-      this.menus.forEach(v => this.checkMenuItemExpand(v));
+      this.data.forEach(v => this.checkMenuItemExpand(v));
     }
 
     // 当菜单项展开层数过多时, 执行折叠会造成菜单错位的问题. 所以在执行折叠时, 关闭所有展开的菜单项
     if (this.collapsed && changes.collapsed) {
-      this.menus.forEach(v => this.closeMenuItem(v));
+      this.data.forEach(v => this.closeMenuItem(v));
     }
   }
 }
