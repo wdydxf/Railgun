@@ -6,9 +6,9 @@ import { WorkplaceComponent } from './workplace/workplace.component';
 
 
 const routes: Routes = [
-  { path: 'analysis', component: AnalysisComponent },
-  { path: 'monitor', component: MonitorComponent },
-  { path: 'workplace', component: WorkplaceComponent }
+  { path: 'analysis', component: AnalysisComponent, data: { label: '分析页' } },
+  { path: 'monitor', component: MonitorComponent, data: { label: '监控页' } },
+  { path: 'workplace', component: WorkplaceComponent, data: { label: '工作台' } }
 ];
 
 @NgModule({

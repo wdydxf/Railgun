@@ -6,7 +6,10 @@ import { DefaultLayoutComponent } from '../layout/default-layout/default-layout.
 const routes: Routes = [
   {
     path: '', component: DefaultLayoutComponent, children: [
-      { path: 'dashboard', loadChildren: () => import('./dashboard/dashboard.module').then(m => m.DashboardModule) }
+      {
+        path: 'dashboard', data: { label: 'Dashboard' },
+        loadChildren: () => import('./dashboard/dashboard.module').then(m => m.DashboardModule)
+      }
     ]
   }
 ];
