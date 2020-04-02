@@ -4,3 +4,4 @@
 
 export * from './src/axios';
 export * from './src/layout';
+export * from './src/ui';
