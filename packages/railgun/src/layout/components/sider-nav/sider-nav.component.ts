@@ -76,7 +76,7 @@ export class SiderNavComponent implements OnChanges {
 
   ngOnChanges(changes: SimpleChanges): void {
     // 执行菜单项检查
-    if (this.autoExpand && changes.menus) {
+    if (this.autoExpand && changes.data) {
       this.data.forEach(v => this.checkMenuItemExpand(v));
     }
 
