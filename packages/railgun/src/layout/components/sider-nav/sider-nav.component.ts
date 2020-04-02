@@ -1,5 +1,8 @@
-import { Component, Input, OnChanges, SimpleChanges } from '@angular/core';
+import { Component, Input, OnChanges, OnDestroy, OnInit, SimpleChanges } from '@angular/core';
 import { Location } from '@angular/common';
+import { NavigationEnd, Router } from '@angular/router';
+import { filter, takeUntil } from 'rxjs/operators';
+import { Subject } from 'rxjs';
 
 /**
  * 菜单项类型声明
@@ -20,13 +23,16 @@ export interface Menu {
   templateUrl: './sider-nav.component.html',
   styleUrls: ['./sider-nav.component.less']
 })
-export class SiderNavComponent implements OnChanges {
-  @Input() data: Menu[] = [];    // 菜单数据
+export class SiderNavComponent implements OnChanges, OnInit, OnDestroy {
+  @Input() data: Menu[] = [];     // 菜单数据
   @Input() collapsed = false;     // 是否折叠菜单
   @Input() autoExpand = true;     // 是否根据路由自动展开菜单
 
+  private destroy$ = new Subject();
+
   constructor(
-    private location: Location
+    private location: Location,
+    private router: Router
   ) {
   }
 
@@ -43,7 +49,7 @@ export class SiderNavComponent implements OnChanges {
    * @param menu 要检查的菜单项
    * @param keep 是否保留原有的展开状态
    */
-  checkMenuItemExpand(menu: Menu, keep: boolean): boolean {
+  private checkMenuItemExpand(menu: Menu, keep: boolean): boolean {
     const path = this.location.path();
 
     if (menu.children) {
@@ -68,11 +74,23 @@ export class SiderNavComponent implements OnChanges {
    * 关闭菜单项自身及其子项
    * @param menu 要关闭的菜单项
    */
-  closeMenuItem(menu: Menu) {
+  private closeMenuItem(menu: Menu) {
     // 当菜单项为关闭状态时其子项必然是关闭的, 无需向下检查
     if (!menu.children || !menu.open) { return; }
     menu.open = false;
     menu.children.forEach(v => this.closeMenuItem(v));
+  }
+
+  /**
+   * 订阅路由变动
+   */
+  private registerRouterChange() {
+    this.router.events.pipe(
+      filter(event => event instanceof NavigationEnd),
+      takeUntil(this.destroy$)
+    ).subscribe(() => {
+      this.data.forEach(v => this.checkMenuItemExpand(v, true));
+    });
   }
 
   ngOnChanges(changes: SimpleChanges): void {
@@ -85,5 +103,16 @@ export class SiderNavComponent implements OnChanges {
     if (this.collapsed && changes.collapsed) {
       this.data.forEach(v => this.closeMenuItem(v));
     }
+  }
+
+  ngOnInit(): void {
+    if (this.autoExpand) {
+      this.registerRouterChange();
+    }
+  }
+
+  ngOnDestroy(): void {
+    this.destroy$.next();
+    this.destroy$.complete();
   }
 }
