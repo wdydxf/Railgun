@@ -1,6 +1,24 @@
 {
   "name": "@ndct/railgun",
   "version": "0.0.1",
+  "description": "你指尖跃动的电光, 是我此生不变的信仰!",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/NoDocCat/Railgun.git"
+  },
+  "author": "NoDocCat",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/NoDocCat/Railgun/issues"
+  },
+  "homepage": "https://github.com/NoDocCat/Railgun#readme",
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org"
+  },
+  "keywords": [
+    "Angular",
+    "ng-zorro-antd"
+  ],
   "peerDependencies": {
     "@angular/common": "~9.0.7",
     "@angular/core": "~9.0.7",
