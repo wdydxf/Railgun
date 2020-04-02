@@ -61,5 +61,10 @@ export const menus: Menu[] = [
       { label: 'Github', icon: 'github', link: 'https://github.com', target: '_self' },
       { label: 'Gitlab', icon: 'gitlab', link: 'https://gitlab.com', disabled: true }
     ]
+  },
+  {
+    label: '拓展组件', icon: 'experiment', children: [
+      { label: '表格', icon: 'table', link: '/expand/table' }
+    ]
   }
 ];

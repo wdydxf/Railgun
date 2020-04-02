@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgZorroAntdModule } from 'ng-zorro-antd';
+import { RgUiModule } from '@ndct/railgun';
 
 
 @NgModule({
@@ -15,6 +16,7 @@ import { NgZorroAntdModule } from 'ng-zorro-antd';
   exports: [
     FormsModule,
     ReactiveFormsModule,
+    RgUiModule,
     NgZorroAntdModule
   ]
 })
