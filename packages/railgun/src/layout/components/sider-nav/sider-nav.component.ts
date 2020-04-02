@@ -41,12 +41,13 @@ export class SiderNavComponent implements OnChanges {
   /**
    * 检查菜单项, 若其子项与路由匹配则展开自身
    * @param menu 要检查的菜单项
+   * @param keep 是否保留原有的展开状态
    */
-  checkMenuItemExpand(menu: Menu): boolean {
+  checkMenuItemExpand(menu: Menu, keep: boolean): boolean {
     const path = this.location.path();
 
     if (menu.children) {
-      menu.open = false;  // 默认关闭
+      menu.open = keep ? !!menu.open : false;
       menu.children.forEach(v => {
         // 检查子项
         if (!v.children && v.link && path.startsWith(v.link)) {
@@ -54,7 +55,7 @@ export class SiderNavComponent implements OnChanges {
         }
 
         // 对于多级菜单递归向下检查
-        if (v.children && this.checkMenuItemExpand(v)) {
+        if (v.children && this.checkMenuItemExpand(v, keep)) {
           menu.open = true;
         }
       });
@@ -77,7 +78,7 @@ export class SiderNavComponent implements OnChanges {
   ngOnChanges(changes: SimpleChanges): void {
     // 执行菜单项检查
     if (this.autoExpand && changes.data) {
-      this.data.forEach(v => this.checkMenuItemExpand(v));
+      this.data.forEach(v => this.checkMenuItemExpand(v, false));
     }
 
     // 当菜单项展开层数过多时, 执行折叠会造成菜单错位的问题. 所以在执行折叠时, 关闭所有展开的菜单项
