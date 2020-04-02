@@ -1,3 +1,18 @@
-<rg-table>
-  <rg-table-column></rg-table-column>
-</rg-table>
+<nz-page-header nzTitle="表格" nzSubtitle="简化API的表格组件, 满足大多数业务的需求" [nzGhost]="false">
+  <nz-page-header-content>
+    <p nz-paragraph>
+      一般情况下, 我们只需要20%的API就能完成80%的功能需求. 因此对nz-table组件进行了二次的封装.
+      对API进行了简化处理, 以希望于在完成通用业务时能够减少工作量.
+    </p>
+    <p nz-paragraph>
+      同时内部实现了诸如: 自适应高度, 根据页数计算实际序号等常用特性
+    </p>
+  </nz-page-header-content>
+</nz-page-header>
+
+<!-- todo: 自适应高度的card指令完成后替换为card -->
+<div class="table-wrapper">
+  <rg-table>
+    <rg-table-column></rg-table-column>
+  </rg-table>
+</div>
